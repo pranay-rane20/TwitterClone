@@ -71,7 +71,7 @@ app.get("/logout", function (req, res) {
 
 function isLoggedIn(req, res, next) {
     if (!req.cookies.token) return res.redirect("/login");
-    jwt.verify(req.cookies.token, "secret", function (err, decoded) { // don't write secret here, it's extremely unsafe
+    jwt.verify(req.cookies.token, "secret", function (err, decoded) {
         if (err) {
             res.cookie("token", "");
             return res.redirect("/login");
@@ -80,8 +80,7 @@ function isLoggedIn(req, res, next) {
             req.user = decoded;
             next();
         }
-    }) // don't write secret here, it's extremely unsafe
-
+    }) 
 
 }
 
