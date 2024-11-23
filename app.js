@@ -1,10 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const userModel = require("./models/user.model");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const flash = require('connect-flash');
-const expressSession = require("express-session");
+
 
 const app = express();
 
