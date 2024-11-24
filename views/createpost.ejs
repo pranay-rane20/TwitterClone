@@ -1,66 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Post</title>
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-900 min-h-screen text-white flex justify-center items-center">
+<%- include('./partials/header.ejs') %>
 
-  <!-- Create Post Container -->
-  <div class="w-full max-w-xl bg-gray-800 shadow-lg rounded-lg">
     <!-- Header -->
-    <div class="p-4 border-b border-gray-700 flex items-center">
-      <a href="/" class="text-gray-400 hover:text-white mr-4">
-        <i class="ri-arrow-left-line text-2xl"></i>
-      </a>
-      <h1 class="text-lg font-bold">Create Post</h1>
+    <div class="flex items-center justify-between px-4 py-2 border-b border-gray-700">
+        <a href="/feed" class="text-blue-500 text-sm">Cancel</a>
+        <span class="text-sm text-gray-400">App Store</span>
+        <button id="createpost-btn" class="bg-blue-500 text-white text-sm px-4 py-1 rounded-full">Post</button>
     </div>
 
-    <!-- Create Post Form -->
-    <form action="/createpost" method="post" class="p-4 space-y-4">
-      <!-- User Info -->
-      <div class="flex items-start space-x-4">
-        <img src="https://i.pravatar.cc/40?img=4" alt="User Avatar" class="w-12 h-12 rounded-full">
-        <textarea 
-          name="tweet" 
-          rows="4" 
-          placeholder="What's happening?" 
-          class="w-full bg-gray-700 text-white placeholder-gray-400 rounded-lg p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-          required
-        ></textarea>
-      </div>
+    <!-- Input Section -->
+    <form id="createpost-form" action="/createpost" method="post">
+        <div class="flex space-x-4 px-4 py-4">
+            <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full" />
+            <textarea name="tweet" placeholder="What’s happening?"
+                class="w-full bg-transparent text-gray-300 placeholder-gray-500 focus:outline-none text-lg resize-none"
+                rows="4"></textarea>
+        </div>
+    </form>
 
-      <!-- Actions -->
-      <div class="flex justify-between items-center">
-        <!-- Icons -->
-        <div class="flex items-center space-x-4 text-gray-400">
-          <button type="button" class="hover:text-blue-500">
-            <i class="ri-image-line text-xl"></i>
-          </button>
-          <button type="button" class="hover:text-blue-500">
-            <i class="ri-bar-chart-horizontal-line text-xl"></i>
-          </button>
-          <button type="button" class="hover:text-blue-500">
-            <i class="ri-emotion-happy-line text-xl"></i>
-          </button>
-          <button type="button" class="hover:text-blue-500">
-            <i class="ri-calendar-event-line text-xl"></i>
-          </button>
+    <div class="fixed bottom-0 w-full">
+        <!-- Reply Options -->
+        <div class="px-4 py-3 text-blue-500 text-sm border-b border-gray-700 flex items-center space-x-1">
+            <i class="ri-earth-line"></i>
+            <span>Everyone can reply</span>
         </div>
 
-        <!-- Tweet Button -->
-        <button 
-          type="submit" 
-          class="bg-blue-500 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-600"
-        >
-          Tweet
-        </button>
-      </div>
-    </form>
-  </div>
+        <!-- Tweet Options -->
+        <div class="flex justify-between items-center px-4 py-4">
+            <div class="flex items-center space-x-4 text-blue-500">
+                <i class="ri-font-size text-xl"></i>
+                <i class="ri-image-line text-xl"></i>
+                <i class="ri-live-line text-xl"></i>
+                <i class="ri-gif-line text-xl"></i>
+                <i class="ri-bar-chart-grouped-line text-xl"></i>
+                <i class="ri-play-list-line text-xl"></i>
+                <i class="ri-map-pin-line text-xl"></i>
+            </div>
+            <i class="ri-add-circle-line text-blue-500 text-2xl"></i>
+        </div>
+    </div>
 
-</body>
-</html>
+    <script>
+        document.querySelector("#createpost-btn").addEventListener("click", function () {
+            document.querySelector("#createpost-form").submit();
+        })
+    </script>
+    </body>
+
+    </html>
