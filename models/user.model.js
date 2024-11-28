@@ -7,18 +7,13 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
     },
-    email: {
-        type: String,
-        unique: true,
-        trim: true
-    },
     password: {
         type: String,
         required: true,
     },
-    posts: {
-        type: Array,
-        default: []
+    tweets: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'tweet'
     }
 }, { timestamps: true });
 

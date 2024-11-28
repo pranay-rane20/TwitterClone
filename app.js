@@ -107,6 +107,19 @@ app.post("/createpost", isLoggedIn, async function (req, res) {
     res.redirect("/feed");
 })
 
+app.get('/like-tweet/:id', isLoggedIn, async (req, res, next) => {
+    const tweet = await tweetModel.findById(req.params.id);
+
+    if (tweet.likes.includes(req.user._id)) {
+        tweet.likes.splice(tweet.likes.indexOf(req.user._id), 1);
+    } else {
+        tweet.likes.push(req.user._id);
+    }
+
+    await tweet.save();
+
+    res.redirect('/feed');
+});
 
 function isLoggedIn(req, res, next) {
     if (!req.cookies.token) {

@@ -41,10 +41,10 @@
                         <i class="ri-repeat-line"></i>
                         <span>81K</span>
                     </div>
-                    <div class="flex items-center space-x-1">
+                    <a href="/like-tweet/<%= tweet._id %>" class="flex items-center space-x-1">
                         <i class="ri-heart-line"></i>
-                        <span>914K</span>
-                    </div>
+                        <span><%= tweet.likes.length %></span>
+                    </a>
                     <div class="flex items-center space-x-1">
                         <i class="ri-bar-chart-box-line"></i>
                         <span>84M</span>
